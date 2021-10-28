@@ -2,7 +2,7 @@ import { axiosParamsConfigType, AxiosResponse, AxiosPromise } from '../types'
 import { formatResponseHeader } from '../helpers/header'
 import { formatReponseData } from '../helpers/data'
 export function xhr(config: axiosParamsConfigType): AxiosPromise {
-  return new Promise((resove, reject) => {
+  return new Promise((resolve, reject) => {
     const { data = null, url, method = 'get', headers = {} } = config
     const request = new XMLHttpRequest()
     request.open(method.toUpperCase(), url, true)
@@ -17,10 +17,15 @@ export function xhr(config: axiosParamsConfigType): AxiosPromise {
         responseText,
         status
       } = request
-      console.log(request, 'request')
+      // console.log(request, 'request')
       if (readyState !== 4) {
         return
       }
+
+      if (request.status === 0) {
+        return
+      }
+
       // 获取响应头所有头部
       const responseHeaders = getAllResponseHeaders.call(request)
       // 获取响应头数据
@@ -34,8 +39,23 @@ export function xhr(config: axiosParamsConfigType): AxiosPromise {
         config,
         request
       }
-      resove(responseMap)
+      handleResponse(responseMap)
+
+      function handleResponse(response: AxiosResponse) {
+        if (response.status >= 200 && response.status < 300) {
+          resolve(response)
+        } else {
+          reject(new Error(`Request failed with status code ${response.status}`))
+        }
+      }
       console.log(responseMap)
+    }
+    request.onerror = function() {
+      debugger
+      console.log('** An error occurred during the transaction')
+      // reject(reject(new Error('Network Error')))
     }
   })
 }
+
+// 对response进行处理

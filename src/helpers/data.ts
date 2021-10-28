@@ -19,7 +19,8 @@ export function formatReponseData(data: AxiosResponse['data']): any {
       data = JSON.parse(data)
       console.log(data)
     } catch (e) {
-      throw new Error('返回的data格式不为json')
+      // throw new Error('返回的data格式不为json')
+      console.log('返回的data格式不为json')
     }
   }
   return data
