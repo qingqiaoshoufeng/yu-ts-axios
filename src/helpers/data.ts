@@ -10,6 +10,7 @@ export function formatData(data: any): any {
 }
 /**
  * @param { AxiosResponse['data']} data
+ * @return {AxiosResponse['data']}
  */
 export function formatReponseData(data: AxiosResponse['data']): any {
   if (isString(data)) {

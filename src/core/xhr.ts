@@ -1,6 +1,6 @@
 import { axiosParamsConfigType, AxiosResponse } from '../types'
-import { formatResponseHeader, formatReponseData } from '../helpers/header'
-
+import { formatResponseHeader } from '../helpers/header'
+import { formatReponseData } from '../helpers/data'
 export function xhr(config: axiosParamsConfigType) {
   const { data = null, url, method = 'get', headers = {} } = config
   const request = new XMLHttpRequest()
