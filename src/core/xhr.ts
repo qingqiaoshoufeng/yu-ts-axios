@@ -1,5 +1,5 @@
 import { axiosParamsConfigType, AxiosResponse } from '../types'
-import { formatResponseHeader } from '../helpers/header'
+import { formatResponseHeader, formatReponseData } from '../helpers/header'
 
 export function xhr(config: axiosParamsConfigType) {
   const { data = null, url, method = 'get', headers = {} } = config
@@ -24,7 +24,7 @@ export function xhr(config: axiosParamsConfigType) {
     const responseHeaders = getAllResponseHeaders.call(request)
     const responseData = responseType && responseType !== 'text' ? response : responseText
     const responseMap: AxiosResponse = {
-      data: responseData,
+      data: formatReponseData(responseData),
       status: status,
       statusText: request.statusText,
       headers: formatResponseHeader(responseHeaders),
