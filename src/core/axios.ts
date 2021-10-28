@@ -1,11 +1,11 @@
-import { axiosParamsConfigType } from '../types'
+import { axiosParamsConfigType, AxiosPromise } from '../types'
 import { formatUrl } from '../helpers/url'
 import { formatData } from '../helpers/data'
 import { formatHeader } from '../helpers/header'
 import { xhr } from './xhr'
-export function axios(config: axiosParamsConfigType) {
+export function axios(config: axiosParamsConfigType): AxiosPromise {
   processConfig(config)
-  xhr(config)
+  return xhr(config)
 }
 
 function processConfig(config: axiosParamsConfigType): void {

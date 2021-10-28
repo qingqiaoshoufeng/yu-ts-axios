@@ -20,6 +20,7 @@ export interface axiosParamsConfigType {
   data?: any
   params?: any
   headers?: Record<string, any>
+  responseType?: string
 }
 
 export interface AxiosResponse {

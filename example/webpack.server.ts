@@ -5,8 +5,10 @@ import routerList from './router/index'
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 // const routerList = require('./router/index')
 // console.log(routerList)
+// const NODE_ENV = (process as any).NODE_ENV
+const NODE_ENV = process.env.NODE_ENV
 module.exports = {
-  mode: 'development',
+  mode: NODE_ENV,
 
   /**
    * 我们会在 examples 目录下建多个子目录
@@ -120,7 +122,8 @@ module.exports = {
         if (!dir.includes('.') && dir !== 'router') {
           return new HtmlWebpackPlugin({
             template: fullDir + '/index.html', //需要放打包文件的html模板路径
-            filename: dir + '/index.html'
+            filename: dir + '/index.html',
+            chunks: [dir]
           })
         }
       })

@@ -19,8 +19,9 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-    "dev": "npx webpack serve --progress --config ./example/webpack.server.ts",
+    "dev": "cross-env NODE_ENV=development npx webpack serve --progress --config ./example/webpack.server.ts",
     "serve": "ts-node example/server.ts",
+    "buildExample": "cross-env NODE_ENV=production npx webpack --progress --config ./example/webpack.server.ts",
     "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
     "build": "tsc --module commonjs && rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src",
