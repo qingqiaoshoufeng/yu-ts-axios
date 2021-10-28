@@ -21,6 +21,7 @@ export interface axiosParamsConfigType {
   params?: any
   headers?: Record<string, any>
   responseType?: string
+  timeout?: number
 }
 
 export interface AxiosResponse {

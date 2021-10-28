@@ -1,41 +1,42 @@
 import axios from '../../src/index' // AxiosError
 
-// 模拟404错误
-axios({
-  method: 'get',
-  url: '/error/get1'
-})
-  .then(res => {
-    console.log(res)
-  })
-  .catch(e => {
-    debugger
-    console.log(e, '模拟404错误')
-  })
-
+// // 模拟404错误
 // axios({
 //   method: 'get',
-//   url: '/error/get'
+//   url: '/error/get1'
 // })
 //   .then(res => {
 //     console.log(res)
 //   })
 //   .catch(e => {
-//     console.log(e)
+//     debugger
+//     console.log(e, '模拟404错误')
 //   })
 
-// setTimeout(() => {
-//   axios({
-//     method: 'get',
-//     url: '/error/get'
-//   })
-//     .then(res => {
-//       console.log(res)
-//     })
-//     .catch(e => {
-//       console.log(e)
-//     })
-// }, 5000)
+axios({
+  method: 'get',
+  url: '/error/get'
+})
+  .then(res => {
+    console.log(res)
+  })
+  .catch(e => {
+    console.log(e)
+  })
+
+// 模拟onerror错误
+setTimeout(() => {
+  axios({
+    method: 'get',
+    url: '/error/get'
+  })
+    .then(res => {
+      console.log(res)
+    })
+    .catch(e => {
+      console.log(e, '模拟onerror错误')
+    })
+}, 5000)
 
 // axios({
 //   method: 'get',

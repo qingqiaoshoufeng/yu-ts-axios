@@ -1,6 +1,7 @@
 import { configItem } from '../types'
 
 const configList: configItem[] = [
+  // 随机产生五百的错误
   {
     method: 'get',
     path: '/error/get',

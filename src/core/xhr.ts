@@ -3,7 +3,7 @@ import { formatResponseHeader } from '../helpers/header'
 import { formatReponseData } from '../helpers/data'
 export function xhr(config: axiosParamsConfigType): AxiosPromise {
   return new Promise((resolve, reject) => {
-    const { data = null, url, method = 'get', headers = {} } = config
+    const { data = null, url, method = 'get', headers = {}, timeout } = config
     const request = new XMLHttpRequest()
     request.open(method.toUpperCase(), url, true)
     request.send(data)
@@ -53,7 +53,10 @@ export function xhr(config: axiosParamsConfigType): AxiosPromise {
     request.onerror = function() {
       debugger
       console.log('** An error occurred during the transaction')
-      // reject(reject(new Error('Network Error')))
+      reject(reject(new Error('Network Error')))
+    }
+    request.ontimeout = function handleTimeout() {
+      reject(new Error(`Timeout of ${timeout} ms exceeded`))
     }
   })
 }
