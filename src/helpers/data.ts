@@ -7,3 +7,5 @@ export function formatData(data: any): any {
   }
   return result
 }
+
+export function formatReponseData(data) {}
