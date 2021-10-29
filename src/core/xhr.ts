@@ -7,7 +7,9 @@ export function xhr(config: axiosParamsConfigType): AxiosPromise {
     const request = new XMLHttpRequest()
     request.open(method.toUpperCase(), url, true)
     request.send(data)
-
+    if (timeout) {
+      request.timeout = timeout
+    }
     request.onreadystatechange = function() {
       const {
         readyState,
@@ -55,7 +57,7 @@ export function xhr(config: axiosParamsConfigType): AxiosPromise {
       console.log('** An error occurred during the transaction')
       reject(reject(new Error('Network Error')))
     }
-    request.ontimeout = function handleTimeout() {
+    request.ontimeout = function() {
       reject(new Error(`Timeout of ${timeout} ms exceeded`))
     }
   })

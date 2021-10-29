@@ -1,4 +1,4 @@
-import axios from '../../src/index' // AxiosError
+import axios, { AxiosError } from '../../src/index' // AxiosError
 
 // // 模拟404错误
 // axios({
@@ -13,46 +13,46 @@ import axios from '../../src/index' // AxiosError
 //     console.log(e, '模拟404错误')
 //   })
 
-axios({
-  method: 'get',
-  url: '/error/get'
-})
-  .then(res => {
-    console.log(res)
-  })
-  .catch(e => {
-    console.log(e)
-  })
-
-// 模拟onerror错误
-setTimeout(() => {
-  axios({
-    method: 'get',
-    url: '/error/get'
-  })
-    .then(res => {
-      console.log(res)
-    })
-    .catch(e => {
-      console.log(e, '模拟onerror错误')
-    })
-}, 5000)
-
 // axios({
 //   method: 'get',
-//   url: '/error/timeout',
-//   timeout: 2000
+//   url: '/error/get'
 // })
 //   .then(res => {
 //     console.log(res)
 //   })
-//   .catch((e: AxiosError) => {
-//     console.log(e.message)
-//     console.log(e.config)
-//     console.log(e.code)
-//     console.log(e.request)
-//     console.log(e.isAxiosError)
+//   .catch(e => {
+//     console.log(e)
 //   })
+
+// // 模拟onerror错误
+// setTimeout(() => {
+//   axios({
+//     method: 'get',
+//     url: '/error/get'
+//   })
+//     .then(res => {
+//       console.log(res)
+//     })
+//     .catch(e => {
+//       console.log(e, '模拟onerror错误')
+//     })
+// }, 5000)
+
+axios({
+  method: 'get',
+  url: '/error/timeout',
+  timeout: 2000
+})
+  .then(res => {
+    console.log(res)
+  })
+  .catch((e: AxiosError) => {
+    console.log(e.message)
+    console.log(e.config)
+    console.log(e.code)
+    console.log(e.request)
+    console.log(e.isAxiosError)
+  })
 // // import axios, { AxiosError } from '../../src/index'
 
 // axios({
