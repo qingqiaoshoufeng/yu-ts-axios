@@ -14,7 +14,7 @@ export type Method =
   | 'patch'
   | 'PATCH'
 
-export interface axiosParamsConfigType {
+export interface AxiosParamsConfigType {
   url: string
   method?: Method
   data?: any
@@ -24,21 +24,31 @@ export interface axiosParamsConfigType {
   timeout?: number
 }
 
-export interface AxiosResponse {
+export interface AxiosParamsConfigTypeType {
   data: any
   status: number
   statusText: string
   headers: any
-  config: axiosParamsConfigType
+  config: AxiosParamsConfigType
   request: any
 }
 
-export interface AxiosPromise extends Promise<AxiosResponse> {}
+export interface AxiosPromise extends Promise<AxiosParamsConfigTypeType> {}
 
-export interface AxiosError extends Error {
-  config: axiosParamsConfigType
+export interface AxiosErrorType extends Error {
+  config: AxiosParamsConfigType
   code?: string
   request?: any
-  response?: AxiosResponse
+  response?: AxiosParamsConfigTypeType
   isAxiosError: boolean
 }
+
+export interface AxiosErrorParamsType {
+  message: string
+  config: AxiosParamsConfigType
+  code?: string | null
+  request?: any
+  response?: AxiosParamsConfigTypeType
+}
+
+export type errorParamsMapType = Record<string, AxiosErrorParamsType>

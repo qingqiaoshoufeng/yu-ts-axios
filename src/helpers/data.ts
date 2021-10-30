@@ -1,5 +1,5 @@
 import { isPlainObject, isString } from './utils'
-import { AxiosResponse } from '../types'
+import { AxiosParamsConfigType } from '../types'
 
 export function formatData(data: any): any {
   let result = data
@@ -9,10 +9,10 @@ export function formatData(data: any): any {
   return result
 }
 /**
- * @param { AxiosResponse['data']} data
- * @return {AxiosResponse['data']}
+ * @param { AxiosParamsConfigType['data']} data
+ * @return {AxiosParamsConfigType['data']}
  */
-export function formatReponseData(data: AxiosResponse['data']): any {
+export function formatReponseData(data: AxiosParamsConfigType['data']): any {
   if (isString(data)) {
     try {
       // debugger
