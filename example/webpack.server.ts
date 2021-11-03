@@ -1,7 +1,12 @@
-import * as fs from 'fs'
-import * as path from 'path'
-import * as webpack from 'webpack'
+// import * as fs from 'fs'
+// import * as path from 'path'
+// import * as webpack from 'webpack'
+// import routerList from './router/index'
+import fs from 'fs'
+import path from 'path'
+import webpack from 'webpack'
 import routerList from './router/index'
+
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 // const routerList = require('./router/index')
 // console.log(routerList)

@@ -15,7 +15,7 @@ export type Method =
   | 'PATCH'
 
 export interface AxiosParamsConfigType {
-  url: string
+  url?: string
   method?: Method
   data?: any
   params?: any
@@ -52,3 +52,34 @@ export interface AxiosErrorParamsType {
 }
 
 export type errorParamsMapType = Record<string, AxiosErrorParamsType>
+
+/**
+ *  @description axios 原型类
+ */
+
+export interface Axios {
+  request(config: AxiosParamsConfigType): AxiosPromise
+
+  get(url: string, config?: AxiosParamsConfigType): AxiosPromise
+
+  delete(url: string, config?: AxiosParamsConfigType): AxiosPromise
+
+  head(url: string, config?: AxiosParamsConfigType): AxiosPromise
+
+  options(url: string, config?: AxiosParamsConfigType): AxiosPromise
+
+  post(url: string, data?: any, config?: AxiosParamsConfigType): AxiosPromise
+
+  put(url: string, data?: any, config?: AxiosParamsConfigType): AxiosPromise
+
+  patch(url: string, data?: any, config?: AxiosParamsConfigType): AxiosPromise
+}
+
+/**
+ *  @description axios 实例类
+ */
+export interface AxiosInstanceType extends Axios {
+  (config: AxiosParamsConfigType): AxiosPromise
+}
+
+export type CreatAxiosInstanceType = () => AxiosInstanceType

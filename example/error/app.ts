@@ -1,5 +1,5 @@
-import axios, { AxiosError } from '../../src/index' // AxiosError
-
+import axios from '../../src/index' // AxiosErrorType
+console.log(axios)
 // // 模拟404错误
 // axios({
 //   method: 'get',
@@ -46,14 +46,14 @@ axios({
   .then(res => {
     console.log(res)
   })
-  .catch((e: AxiosError) => {
+  .catch((e: AxiosErrorType) => {
     console.log(e.message)
     console.log(e.config)
     console.log(e.code)
     console.log(e.request)
     console.log(e.isAxiosError)
   })
-// // import axios, { AxiosError } from '../../src/index'
+// // import axios, { AxiosErrorType } from '../../src/index'
 
 // axios({
 //   method: 'get',

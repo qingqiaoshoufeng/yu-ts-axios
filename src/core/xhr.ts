@@ -1,5 +1,5 @@
 import {
-  axiosParamsConfigType,
+  AxiosParamsConfigType,
   AxiosParamsConfigTypeType,
   AxiosPromise,
   AxiosErrorParamsType,
@@ -8,11 +8,11 @@ import {
 import { formatResponseHeader } from '../helpers/header'
 import { formatReponseData } from '../helpers/data'
 import { createError } from '../helpers/error'
-export function xhr(config: axiosParamsConfigType): AxiosPromise {
+export function xhr(config: AxiosParamsConfigType): AxiosPromise {
   return new Promise((resolve, reject) => {
     const { data = null, url, method = 'get', headers = {}, timeout } = config
     const request = new XMLHttpRequest()
-    request.open(method.toUpperCase(), url, true)
+    request.open(method.toUpperCase(), url!, true)
     request.send(data)
 
     const {

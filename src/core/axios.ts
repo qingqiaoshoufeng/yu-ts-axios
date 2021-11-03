@@ -1,30 +1,55 @@
-import { axiosParamsConfigType, AxiosPromise } from '../types'
-import { formatUrl } from '../helpers/url'
-import { formatData } from '../helpers/data'
-import { formatHeader } from '../helpers/header'
-import { xhr } from './xhr'
-export function axios(config: axiosParamsConfigType): AxiosPromise {
-  processConfig(config)
-  return xhr(config)
-}
+import { AxiosParamsConfigType, AxiosPromise, Method, AxiosInstanceType } from '../types'
+import { request } from './request'
 
-function processConfig(config: axiosParamsConfigType): void {
-  config.url = transformUrl(config)
-  config.headers = transformHeader(config)
-  config.data = transformData(config)
-}
+export default class Axios {
+  request(config: AxiosParamsConfigType): AxiosPromise {
+    return request(config)
+  }
 
-function transformUrl(config: axiosParamsConfigType): string {
-  const { url, data } = config
-  return formatUrl(url, data)
-}
+  get(url: string, config?: AxiosParamsConfigType): AxiosPromise {
+    return this._requestMethodWithoutData('get', url, config)
+  }
 
-function transformData(config: axiosParamsConfigType): string {
-  const { data } = config
-  return formatData(data)
-}
+  delete(url: string, config?: AxiosParamsConfigType): AxiosPromise {
+    return this._requestMethodWithoutData('delete', url, config)
+  }
 
-function transformHeader(config: axiosParamsConfigType): Record<string, any> {
-  const { headers, data } = config
-  return formatHeader(headers, data)
+  head(url: string, config?: AxiosParamsConfigType): AxiosPromise {
+    return this._requestMethodWithoutData('head', url, config)
+  }
+
+  options(url: string, config?: AxiosParamsConfigType): AxiosPromise {
+    return this._requestMethodWithoutData('options', url, config)
+  }
+
+  post(url: string, data?: any, config?: AxiosParamsConfigType): AxiosPromise {
+    return this._requestMethodWithData('post', url, data, config)
+  }
+
+  put(url: string, data?: any, config?: AxiosParamsConfigType): AxiosPromise {
+    return this._requestMethodWithData('put', url, data, config)
+  }
+
+  patch(url: string, data?: any, config?: AxiosParamsConfigType): AxiosPromise {
+    return this._requestMethodWithData('patch', url, data, config)
+  }
+
+  _requestMethodWithoutData(method: Method, url: string, config?: AxiosParamsConfigType) {
+    return this.request(
+      Object.assign(config || {}, {
+        method,
+        url
+      })
+    )
+  }
+
+  _requestMethodWithData(method: Method, url: string, data?: any, config?: AxiosParamsConfigType) {
+    return this.request(
+      Object.assign(config || {}, {
+        method,
+        url,
+        data
+      })
+    )
+  }
 }

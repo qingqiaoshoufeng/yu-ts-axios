@@ -3,48 +3,48 @@ import { configItem } from '../types'
 const configList: configItem[] = [
   {
     method: 'get',
-    path: '/extend/get',
+    path: '/simple/get',
     callBack: function(req, res) {
       res.json({
-        msg: 'hello world'
+        msg: `hello world`
       })
     }
-  },
-  {
-    method: 'options',
-    path: '/extend/options',
-    callBack: function(req, res) {
-      res.end()
-    }
-  },
-  {
-    method: 'delete',
-    path: '/extend/delete',
-    callBack: function(req, res) {
-      res.end()
-    }
-  },
-  {
-    method: 'head',
-    path: '/extend/head',
-    callBack: function(req, res) {
-      res.end()
-    }
-  },
-  {
-    method: 'post',
-    path: '/extend/post',
-    callBack: function(req, res) {
-      res.json(req.body)
-    }
-  },
-  {
-    method: 'put',
-    path: '/extend/head',
-    callBack: function(req, res) {
-      res.end()
-    }
   }
+  // {
+  //   method: 'options',
+  //   path: '/extend/options',
+  //   callBack: function(req, res) {
+  //     res.end()
+  //   }
+  // },
+  // {
+  //   method: 'delete',
+  //   path: '/extend/delete',
+  //   callBack: function(req, res) {
+  //     res.end()
+  //   }
+  // },
+  // {
+  //   method: 'head',
+  //   path: '/extend/head',
+  //   callBack: function(req, res) {
+  //     res.end()
+  //   }
+  // },
+  // {
+  //   method: 'post',
+  //   path: '/extend/post',
+  //   callBack: function(req, res) {
+  //     res.json(req.body)
+  //   }
+  // },
+  // {
+  //   method: 'put',
+  //   path: '/extend/head',
+  //   callBack: function(req, res) {
+  //     res.end()
+  //   }
+  // }
 ]
 
 function registerSimpleRouter(app: any) {
@@ -55,35 +55,10 @@ function registerSimpleRouter(app: any) {
 }
 export default registerSimpleRouter
 
-// function registerExtendRouter() {
-// router.delete('/extend/delete', function(req, res) {
-//   res.end()
-// })
-
-// router.head('/extend/head', function(req, res) {
-//   res.end()
-// })
-
-// router.post('/extend/post', function(req, res) {
-//   res.json(req.body)
-// })
-
-// router.put('/extend/put', function(req, res) {
-//   res.json(req.body)
-// })
-
-// router.patch('/extend/patch', function(req, res) {
-//   res.json(req.body)
-// })
-
-// router.get('/extend/user', function(req, res) {
-//   res.json({
-//     code: 0,
-//     message: 'ok',
-//     result: {
-//       name: 'jack',
-//       age: 18
-//     }
+// function registerSimpleRouter() {
+//   router.get('/simple/get', function(req, res) {
+//     res.json({
+//       msg: `hello world`
+//     })
 //   })
-// })
 // }

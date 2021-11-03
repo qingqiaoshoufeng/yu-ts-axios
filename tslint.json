@@ -1,6 +1,8 @@
 {
   "extends": ["tslint-config-standard", "tslint-config-prettier"],
   "rules": {
-    "comment-format": [false, "check-space"]
+    "comment-format": [false, "check-space"],
+    "注释1": "可以使用<type>parmas 而不只是 as : https://palantir.github.io/tslint/rules/no-angle-bracket-type-assertion/",
+    "no-angle-bracket-type-assertion": false
   }
 }

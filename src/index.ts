@@ -1,5 +1,5 @@
-import { axios } from './core/axios'
+import { instance } from './axios'
 
-export * from './types'
-
+// export * from './types'
+const axios = instance
 export default axios
