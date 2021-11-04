@@ -2,7 +2,21 @@ import { AxiosParamsConfigType, AxiosPromise, Method, AxiosInstanceType } from '
 import { request } from './request'
 
 export default class Axios {
-  request(config: AxiosParamsConfigType): AxiosPromise {
+  /**
+   * @description 函数重载
+   * @example:
+   * const a: AxiosInstanceType = (a, b) => {
+   *    return ('xxx' as any) as AxiosPromise
+   * }
+   * a(1)  error// 第一个参数必须为 string|AxiosParamsConfigType 第二个参数为 AxiosParamsConfigType|undefined
+   * @address  https://www.tslang.cn/docs/handbook/functions.html
+   */
+  request(url: string, config: AxiosParamsConfigType): AxiosPromise {
+    if (toString.call(url).includes('String')) {
+      config.url = url
+    } else {
+      config = url as AxiosParamsConfigType
+    }
     return request(config)
   }
 

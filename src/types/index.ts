@@ -80,6 +80,21 @@ export interface Axios {
  */
 export interface AxiosInstanceType extends Axios {
   (config: AxiosParamsConfigType): AxiosPromise
+  /**
+   * @description 函数重载
+   * @example:
+   * const a: AxiosInstanceType = (a, b) => {
+   *    return ('xxx' as any) as AxiosPromise
+   * }
+   * a(1)  error// 第一个参数必须为 string|AxiosParamsConfigType 第二个参数为 AxiosParamsConfigType|undefined
+   * @address  https://www.tslang.cn/docs/handbook/functions.html
+   */
+  (url: string, config?: AxiosParamsConfigType): AxiosPromise
 }
 
 export type CreatAxiosInstanceType = () => AxiosInstanceType
+
+// const a: AxiosInstanceType = (a, b) => {
+//   return ('xxx' as any) as AxiosPromise
+// }
+// a(1)

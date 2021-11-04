@@ -30,7 +30,9 @@
 
 ​	 ts的交叉类型使用： https://www.tslang.cn/docs/handbook/advanced-types.html
 
+###### 8. 函数重载
 
+​	 函数重载： https://www.tslang.cn/docs/handbook/advanced-types.html
 
 ## bug踩坑
 

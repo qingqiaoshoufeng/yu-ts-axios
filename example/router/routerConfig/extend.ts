@@ -5,6 +5,8 @@ const configList: configItem[] = [
     method: 'get',
     path: '/extend/get',
     callBack: function(req, res) {
+      console.log(req)
+      debugger
       res.json({
         msg: 'hello world'
       })

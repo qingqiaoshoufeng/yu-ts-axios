@@ -6,7 +6,9 @@ import fs from 'fs'
 import path from 'path'
 import webpack from 'webpack'
 import routerList from './router/index'
-
+const cookie = {
+  value: ''
+}
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 // const routerList = require('./router/index')
 // console.log(routerList)
@@ -148,6 +150,7 @@ module.exports = {
       if (!devServer) {
         throw new Error('webpack-dev-server is not defined')
       }
+
       // 自动注册相应接口
       routerList.forEach(item => {
         item(devServer.app)
@@ -157,7 +160,28 @@ module.exports = {
       //   res.json({ custom: 'response' })
       // })
     },
-    hot: false
+    hot: false,
+    proxy: {
+      '/api': {
+        // target: 'http://10.20.10.47:8080',
+        // target: 'http://10.30.2.69:8080',
+        // target: 'http://10.20.10.47:8080',
+        // target: 'http://10.30.2.9:8080',
+        // http://10.30.2.9:8080/swagger-ui.html
+        // target: 'http://10.30.2.41:8080',
+        // target: 'http://10.30.2.75:8080',
+        target: 'http://localhost:9005',
+        // target: 'http://10.30.2.70:8080',
+        // target: 'http://10.30.2.69:8080',
+        // target: 'http://10.30.2.70:8080',
+        changeOrigin: true,
+        headers: {
+          Cookie:
+            'ownership=2P01; orgName=%E5%B7%A5%E5%95%86%E5%AE%9D%E9%B8%A1%E6%B5%8B%E8%AF%95; SESSION=22d6f254-6cd9-4e58-b66e-b1101d841f72; userName=baojiqiang; userPassword=Z3NoMTIzNDU2IQ%3D%3D; name=%E5%AE%9D%E9%B8%A1%E5%BC%BA; loginName=baojiqiang',
+          cccc: 111111
+        }
+      }
+    }
   }
   // target: 'web',
   // optimization: {
